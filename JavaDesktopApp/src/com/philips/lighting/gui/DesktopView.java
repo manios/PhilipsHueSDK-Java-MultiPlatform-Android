@@ -31,6 +31,7 @@ public class DesktopView extends JFrame {
     private Controller controller;
     private JButton setLightsButton;
     private JButton randomLightsButton;
+    private JButton switchOffLightsButton;
     private JButton findBridgesButton;
     private JButton connectToLastBridgeButton;
     private JProgressBar findingBridgeProgressBar;
@@ -100,6 +101,16 @@ public class DesktopView extends JFrame {
             }
         });
         
+        switchOffLightsButton= new JButton("Switch on/off lights");
+        switchOffLightsButton.setEnabled(false);
+        switchOffLightsButton.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                controller.showControlSwitchOffLightsWindow();
+            }
+        });
+        
         randomLightsButton = new JButton("Randomize Lights");
         randomLightsButton.setEnabled(false);
         randomLightsButton.addActionListener(new ActionListener() {
@@ -113,7 +124,7 @@ public class DesktopView extends JFrame {
         double border = 10;
         double size[][] =
             {{border, 160, 20, 300, 20, 160},                 // Columns
-             {border, 26,  10, 26, 26, 26,6,26}}; // Rows
+             {border, 26,  10, 26, 26, 26,6,26,6,26}}; // Rows
 
         mainPanel.setLayout (new TableLayout(size));
 
@@ -131,6 +142,7 @@ public class DesktopView extends JFrame {
         
         mainPanel.add(randomLightsButton,        " 5, 5");
         mainPanel.add(setLightsButton,           " 5, 7");
+        mainPanel.add(switchOffLightsButton,     " 5, 9");
         
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(700,270));
@@ -158,7 +170,16 @@ public class DesktopView extends JFrame {
         return randomLightsButton;
     } 
     
-    public JButton getFindBridgesButton() {
+    
+    public JButton getSwitchOffLightsButton() {
+		return switchOffLightsButton;
+	}
+
+	public void setSwitchOffLightsButton(JButton switchOffLightsButton) {
+		this.switchOffLightsButton = switchOffLightsButton;
+	}
+
+	public JButton getFindBridgesButton() {
         return findBridgesButton;
     } 
 

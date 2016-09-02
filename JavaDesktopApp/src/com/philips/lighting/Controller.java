@@ -9,6 +9,7 @@ import com.philips.lighting.data.HueProperties;
 import com.philips.lighting.gui.AccessPointList;
 import com.philips.lighting.gui.DesktopView;
 import com.philips.lighting.gui.LightColoursFrame;
+import com.philips.lighting.gui.LightSwitchOnFrame;
 import com.philips.lighting.gui.PushLinkFrame;
 import com.philips.lighting.hue.sdk.PHAccessPoint;
 import com.philips.lighting.hue.sdk.PHBridgeSearchManager;
@@ -29,6 +30,7 @@ public class Controller {
     
     private PushLinkFrame pushLinkDialog;
     private LightColoursFrame lightColoursFrame;
+    private LightSwitchOnFrame lightEnableFrame;
     
     private static final int MAX_HUE=65535;
     private Controller instance;
@@ -88,6 +90,7 @@ public class Controller {
             // Enable the Buttons/Controls to change the hue bulbs.s
             desktopView.getRandomLightsButton().setEnabled(true);
             desktopView.getSetLightsButton().setEnabled(true);
+            desktopView.getSwitchOffLightsButton().setEnabled(true);
 
         }
 
@@ -168,6 +171,14 @@ public class Controller {
         }
         lightColoursFrame.setLocationRelativeTo(null); // Centre window
         lightColoursFrame.setVisible(true);
+    }
+    
+    public void showControlSwitchOffLightsWindow() {
+        if (lightEnableFrame == null) {
+            lightEnableFrame = new LightSwitchOnFrame(); 
+        }
+        lightEnableFrame.setLocationRelativeTo(null); // Centre window
+        lightEnableFrame.setVisible(true);
     }
     
     /**
